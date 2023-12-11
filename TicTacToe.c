@@ -109,7 +109,7 @@ void printBoard(char array[],int N,char play){
 
     if(play == 'X' || play == '0'){
 
-        printf("Player %c: ",play);
+        printf("Player %c:\n",play);
 
         for(int i = 0 ; i < N ; i++){
             printf("%c",array[i]);
@@ -208,11 +208,11 @@ void game(char array[],char play,int input){
 void player(char symb){
 
     if(symb == 'X'){
-        printf("Player X: ");
+        printf("Player X:");
         return;
     }
     else if(symb == '0'){
-        printf("Player 0: ");
+        printf("Player 0:");
         return;
     }else{
         return;
@@ -245,21 +245,23 @@ int main(void){
    //FIRST PRINT OF BOARD//
 
    printBoard(board, TIC_TAC_TOE_BOARD_SIZE,E);
+   printf("\n");
 
     while (turn <= 9) { 
 
         /* PLAYER X */
 
         do{
+            player(X);
             scanf("%d", &input);
 
             if(input < 1 || input > 9 || !isEmptyCell(board, input)){
                 player(X);
-                printf("\n");
                 continue;
             }else{
                 game(board, X, input);
                 printBoard(board, TIC_TAC_TOE_BOARD_SIZE,X);
+                printf("\n");
                 if(checkWinner(board, TIC_TAC_TOE_BOARD_SIZE, X) == 0){
                     return 0; 
                 }
@@ -277,15 +279,16 @@ int main(void){
         /* PLAYER 0 */
 
         do{
+            player(O);
             scanf("%d", &input);
 
             if(input < 1 || input > 9 || !isEmptyCell(board, input)){
                 player(O);
-                printf("\n");
                 continue;
             }else{
                 game(board, O, input);
                 printBoard(board, TIC_TAC_TOE_BOARD_SIZE,O);
+                printf("\n");
                 if (checkWinner(board, TIC_TAC_TOE_BOARD_SIZE, O) == 0){
                     return 0; 
                 }
