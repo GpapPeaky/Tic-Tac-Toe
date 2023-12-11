@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <stdbool.h>
 
 #define TIC_TAC_TOE_BOARD_SIZE 60
 
+/* 3X3 BLOCK TO 1D ARRAY ANALOGY */
     /*
         1 -> 1
         2 -> 5
@@ -15,8 +17,6 @@
         8 -> 53
         9 -> 57
     */
-
-#include <stdbool.h>
 
 bool isEmptyCell(char array[], int input) {
     switch (input) {
@@ -251,10 +251,11 @@ int main(void){
         /* PLAYER X */
 
         do{
-            scanf(" %*d", &input);
+            scanf("%d", &input);
 
             if(input < 1 || input > 9 || !isEmptyCell(board, input)){
                 player(X);
+                printf("\n");
                 continue;
             }else{
                 game(board, X, input);
@@ -280,6 +281,7 @@ int main(void){
 
             if(input < 1 || input > 9 || !isEmptyCell(board, input)){
                 player(O);
+                printf("\n");
                 continue;
             }else{
                 game(board, O, input);
